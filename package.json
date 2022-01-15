@@ -1,7 +1,7 @@
 {
-  "name": "ethcall",
-  "version": "4.3.1",
-  "description": "ethers.js-compatible wrapper around Multicall",
+  "name": "ethlens",
+  "version": "4.3.2",
+  "description": "A more optimistic version of ethcall",
   "main": "lib/src/index.js",
   "author": "Timur Badretdinov <destinerx@gmail.com>",
   "keywords": [
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/Destiner/ethcall.git"
+    "url": "git://github.com/belugaprotocol/ethlens.git"
   },
   "license": "MIT",
   "dependencies": {

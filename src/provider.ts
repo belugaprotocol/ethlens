@@ -2,25 +2,20 @@ import { BaseProvider } from '@ethersproject/providers';
 
 import { Call, all as callAll, tryAll as callTryAll } from './call';
 import { getEthBalance } from './calls';
-import { Multicall, getMulticall, getMulticall2 } from './multicall';
-
-const DEFAULT_CHAIN_ID = 1;
+import { Multicall } from './multicall';
 
 export default class Provider {
 	provider?: BaseProvider;
 	multicall: Multicall | null;
 	multicall2: Multicall | null;
 
-	constructor() {
-		this.multicall = getMulticall(DEFAULT_CHAIN_ID);
-		this.multicall2 = getMulticall2(DEFAULT_CHAIN_ID);
-	}
-
-	async init(provider: BaseProvider) {
-		this.provider = provider;
-		const network = await provider.getNetwork();
-		this.multicall = getMulticall(network.chainId);
-		this.multicall2 = getMulticall2(network.chainId);
+	constructor(tMulticall: Multicall | null, tMulticall2?: Multicall | null) {
+		this.multicall = tMulticall;
+		this.multicall2 = null;
+		// Set Multicall2 if provided.
+		if(tMulticall2) {
+			this.multicall2 = tMulticall2;
+		}
 	}
 
 	/**

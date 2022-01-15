@@ -1,4 +1,4 @@
-# ethcall
+# ethlens
 
 Utility library to make calls to Ethereum blockchain.
 
@@ -6,8 +6,10 @@ Uses MakerDAO's [Multicall contracts](https://github.com/makerdao/multicall) to 
 
 Inspired and powered by [ethers.js](https://github.com/ethers-io/ethers.js/).
 
+Forked from [Destiner](https://github.com/Destiner)'s [ethcall](https://github.com/Destiner/ethcall) library.
+
 ```
-npm install ethcall
+npm install ethlens
 ```
 
 ## API
@@ -21,7 +23,7 @@ npm install ethcall
 ## Example
 
 ```js
-import { Contract, Provider } from 'ethcall';
+import { Contract, Provider, getMulticall } from 'ethlens';
 import { InfuraProvider } from '@ethersproject/providers';
 
 import erc20Abi from './abi/erc20.json';
@@ -32,8 +34,7 @@ const provider = new InfuraProvider('mainnet', infuraKey);
 const daiAddress = '0x6b175474e89094c44da98b954eedeac495271d0f';
 
 async function call() {
-	const ethcallProvider = new Provider();
-	await ethcallProvider.init(provider);
+	const ethcallProvider = new Provider(getMulticall(1));
 
 	const daiContract = new Contract(daiAddress, erc20Abi);
 
