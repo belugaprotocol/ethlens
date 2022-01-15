@@ -9,7 +9,8 @@ export default class Provider {
 	multicall: Multicall | null;
 	multicall2: Multicall | null;
 
-	constructor(tMulticall: Multicall | null, tMulticall2?: Multicall | null) {
+	constructor(provider: BaseProvider, tMulticall: Multicall | null, tMulticall2?: Multicall | null) {
+		this.provider = provider
 		this.multicall = tMulticall;
 		this.multicall2 = null;
 		// Set Multicall2 if provided.
